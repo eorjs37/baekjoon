@@ -1,7 +1,7 @@
 const fs = require("fs");
 const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 
-function binarySearch(arr, num) {
+function binarySearch(num, arr = []) {
   let start = 0;
   let end = arr.length - 1;
 
@@ -18,14 +18,13 @@ function binarySearch(arr, num) {
   }
   return 0;
 }
-
 const N = input[1]
   .split(" ")
   .sort((a, b) => a - b)
-  .map((item) => Number(item));
-const M = input[3].split(" ").map((item) => Number(item));
+  .map(Number);
 
+const M = input[3].split(" ").map(Number);
 M.forEach((item) => {
-  const result = binarySearch(N, item);
+  const result = binarySearch(item, N);
   console.log(result);
 });
